@@ -1,0 +1,5 @@
+For the word count, there was only one map and one reduce. For the bigram counter, there were two maps and one reduce. 
+
+This difference is attributed to the number of keys it need to obtain before it makes the <key, value> pair. In word count, we only need to get one key, which is each word in each line. However, in bigram, we had to find two keys: a word in the line and it's adjacent word and combine them into one key. In a way, finding these two keys could be seen as doubling the DFS block size of the input files which made it require 2 mappers to do this job.
+
+The reducer is the same in both job because it is still fed in one unique <key, value> pair to be summed up and displayed.
